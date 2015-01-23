@@ -119,7 +119,8 @@ def windowed_sum(arrays, span, t=None, indices=None, tpowers=0,
     return tuple(results)
 
 
-#@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.boundscheck(False)
 @cython.cdivision(True)
 def _window_fixed(DTYPE_t[::1] a, ITYPE_t span, bint subtract_mid):
     cdef ITYPE_t i, j, start, N
@@ -134,7 +135,8 @@ def _window_fixed(DTYPE_t[::1] a, ITYPE_t span, bint subtract_mid):
     return result
 
 
-#@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.boundscheck(False)
 @cython.cdivision(True)
 def _window_fixed_periodic(DTYPE_t[::1] a, DTYPE_t[::1] t, int tpower,
                            ITYPE_t span, bint subtract_mid, DTYPE_t period):
@@ -151,7 +153,8 @@ def _window_fixed_periodic(DTYPE_t[::1] a, DTYPE_t[::1] t, int tpower,
     return result
 
 
-#@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.boundscheck(False)
 @cython.cdivision(True)
 def _window_variable(DTYPE_t[::1] a, ITYPE_t[::1] ind,
                      ITYPE_t[::1] span, bint subtract_mid):
@@ -168,7 +171,8 @@ def _window_variable(DTYPE_t[::1] a, ITYPE_t[::1] ind,
     return result
 
 
-#@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.boundscheck(False)
 @cython.cdivision(True)
 def _window_variable_periodic(DTYPE_t[::1] a, DTYPE_t[::1] t, int tpower,
                               ITYPE_t[::1] ind, ITYPE_t[::1] span,
