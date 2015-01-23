@@ -3,7 +3,13 @@ from __future__ import division, print_function
 from contextlib import contextmanager
 
 import numpy as np
-from .windowed_sum import windowed_sum, windowed_sum_slow
+from .windowed_sum import windowed_sum_slow
+
+try:
+    # This is the code in the fast branch
+    from ._window_fast import windowed_sum
+except ImportError:
+    from .windowed_sum import windowed_sum
 
 
 @contextmanager
